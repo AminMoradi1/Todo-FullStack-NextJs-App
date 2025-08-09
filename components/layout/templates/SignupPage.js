@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 function SignupPage() {
   const [email, setEmail] = useState("");
@@ -15,7 +16,13 @@ function SignupPage() {
       headers: { "Content-Type": "application/json" },
     });
     const data = await res.json();
-    if(data.status === "success") router.push("/signin")
+    console.log(data);
+    if (data.message === "user exsist already!")
+      toast.error("user already exsist!❌");
+
+    if (data.message === "fill all the fileds")
+      toast.error("Fill All the Fields❌");
+    if (data.status === "success") router.push("/signin");
   };
   return (
     <div className="signin-form">
@@ -37,6 +44,7 @@ function SignupPage() {
         <p>Have an account?</p>
         <Link href={"/signin"}>Sign In</Link>
       </div>
+      <ToastContainer />
     </div>
   );
 }
