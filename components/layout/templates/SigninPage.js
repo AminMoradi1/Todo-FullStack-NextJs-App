@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { toast, ToastContainer } from "react-toastify";
 
 function SigninPage() {
   const [email, setEmail] = useState("");
@@ -22,6 +23,10 @@ function SigninPage() {
       redirect: false,
     });
 
+    console.log(res);
+    
+    
+    if(!res.ok) toast.error("UserName or Password is incorrect!")
     if (!res.error) router.push("/");
   };
 
@@ -45,6 +50,7 @@ function SigninPage() {
         <p>Create an account?</p>
         <Link href="/signup">Sign up</Link>
       </div>
+      <ToastContainer />
     </div>
   );
 }

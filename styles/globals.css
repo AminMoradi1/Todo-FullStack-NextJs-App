@@ -624,6 +624,22 @@ button {
     width: 100%;
   }
 
+  .home-page--todo{
+    width: calc(80% - 16px) !important;
+  }
+
+  .home-page--inProgress{
+    width: calc(80% - 16px) !important;
+  }
+
+  .home-page--review{
+    width: calc(80% - 16px) !important;
+  }
+
+  .home-page--done{
+    width: calc(80% - 16px) !important;
+  }
+
   .tasks .tasks__card div button {
     padding: 3px 6px;
     font-size: 12px;
